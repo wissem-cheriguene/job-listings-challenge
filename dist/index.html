@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Frontend Mentor | Job Listings</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header-bg"></div>
+    <div class="filter"></div>
+    
+    <section class="listing photosnap"
+    data-role="frontend" 
+    data-level="senior" 
+    data-languages="['html', 'css', 'javascript']"
+    >
+      <!-- Item Start -->
+      <div class="item-start">
+        <p>
+          Photosnap <span>New!</span> <span>Featured</span> 
+        </p> 
+        <p>
+          Senior Frontend Developer
+        </p>
+        <p>
+          1d ago <span>Full Time</span> USA only
+        </p>
+      </div>
+      <div class="categories">
+        <!-- Role -->
+        <button class="btn">Frontend</button>
+        <!-- Level -->
+        <button class="btn">Senior</button>
+        <!-- Languages -->
+        <button class="btn">HTML</button> <button class="btn">CSS</button> <button class="btn">JavaScript</button>
+      </div>
+      <!-- Item End -->
+    </section>
+
+    <section class="listing manage"
+    data-role="fullstack" 
+    data-level="midweight" data-languages="python"
+    data-tools="react"
+    >
+      <!-- Item Start -->
+      <div class="item-start">
+        <p>
+          Manage <span>New!</span> <span>Featured</span> 
+        </p> 
+        <p>
+          Fullstack Developer
+        </p>
+        <p>
+          1d ago <span>Part Time</span> Remote
+        </p>
+      </div>
+      <div class="categories">
+        <!-- Role -->
+        <button class="btn">Fullstack</button>
+        <!-- Level -->
+        <button class="btn">Midweight</button>
+        <!-- Languages -->
+        <button class="btn">Python</button> <!-- Tools -->
+        <button class="btn">React</button>
+      </div>
+      <!-- Item End -->
+    </section>
+   
+    <section class="listing account"
+    data-role="frontend" 
+    data-level="junior" data-languages="javascript"
+    data-tools="['react', 'sass']"
+    >
+      <!-- Item Start -->
+      <div class="item-start">
+        <p>
+          Account <span>New!</span> 
+        </p> 
+        <p>
+          Junior Frontend Developer
+        </p>
+        <p>
+          2d ago <span>Part Time</span> USA only
+        </p>
+      </div>
+      <div class="categories">
+        <!-- Role -->
+        <button class="btn">Frontend</button>
+        <!-- Level -->
+        <button class="btn">Junior</button>
+        <!-- Languages -->
+        <button class="btn">Javascript</button> <!-- Tools -->
+        <button class="btn">React</button>
+        <button class="btn">Sass</button>
+      </div>
+      <!-- Item End -->
+    </section>
+
+    <section class="listing my-home"
+    data-role="frontend" 
+    data-level="junior" 
+    data-languages="['css', 'javascript']"
+    >
+      <!-- Item Start -->
+      <div class="item-start">
+        <p>
+          MyHome 
+        </p> 
+        <p>
+          Junior Frontend Developer
+        </p>
+        <p>
+          5d ago  <span>Contract</span> USA only
+        </p>
+      </div>
+      <div class="categories">
+        <!-- Role -->
+        <button class="btn">Frontend</button>
+        <!-- Level -->
+        <button class="btn">Junior</button>
+        <!-- Languages -->
+        <button class="btn">CSS</button>
+        <button class="btn">Javascript</button>
+      <!-- Item End -->
+    </section>
+
+    <section class="listing loop-studios"
+    data-role="fullstack" 
+    data-level="midweight" 
+    data-languages="['ruby', 'javascript']"
+    data-tools="sass"
+    >
+      <!-- Item Start -->
+      <div class="item-start">
+        <p>
+          Loop Studios 
+        </p> 
+        <p>
+          Software Engineer
+        </p>
+        <p>
+          1w ago <span>Full Time</span> Worldwide
+        </p>
+      </div>
+      <div class="categories">
+        <!-- Role -->
+        <button class="btn">Fullstack</button>
+        <!-- Level -->
+        <button class="btn">Midweight</button>
+        <!-- Languages -->
+        <button class="btn">Javascript</button>
+        <button class="btn">Ruby</button>
+        <!-- Tools -->
+        <button class="btn">Sass</button>
+      <!-- Item End -->
+    </section>
+
+    <section class="listing faceit"
+    data-role="backend" 
+    data-level="junior" 
+    data-languages="ruby"
+    data-tools="ror"
+    >
+      <!-- Item Start -->
+      <div class="item-start">
+        <p>
+          FaceIt
+        </p> 
+        <p>
+          Junior Backend Developer
+        </p>
+        <p>
+          2w ago <span>Full Time</span> UK only
+        </p>
+      </div>
+      <div class="categories">
+        <!-- Role -->
+        <button class="btn">Backend</button>
+        <!-- Level -->
+        <button class="btn">Junior</button>
+        <!-- Languages -->
+        <button class="btn">Javascript</button>
+        <button class="btn">Ruby</button>
+        <!-- Tools -->
+        <button class="btn">RoR</button>
+      <!-- Item End -->
+    </section>
+
+    <section class="listing shortly"
+    data-role="frontend" 
+    data-level="junior" 
+    data-languages="['html', 'javascript']"
+    data-tools="sass"
+    >
+      <!-- Item Start -->
+      <div class="item-start">
+        <p>
+          Shortly
+        </p> 
+        <p>
+          Junior Developer
+        </p>
+        <p>
+          2w ago <span>Full Time</span> Worldwide
+        </p>
+      </div>
+      <div class="categories">
+        <!-- Role -->
+        <button class="btn">Frontend</button>
+        <!-- Level -->
+        <button class="btn">Junior</button>
+        <!-- Languages -->
+        <button class="btn">Javascript</button>
+        <button class="btn">HTML</button>
+        <!-- Tools -->
+        <button class="btn">Sass</button>
+      <!-- Item End -->
+    </section>
+
+    <section class="listing insure"
+    data-role="frontend" 
+    data-level="junior" 
+    data-languages="javascript"
+    data-tools="['vue', 'sass']"
+    >
+      <!-- Item Start -->
+      <div class="item-start">
+        <p>
+          Insure
+        </p> 
+        <p>
+          Junior Frontend Developer
+        </p>
+        <p>
+          2w ago <span>Full Time</span> USA only
+        </p>
+      </div>
+      <div class="categories">
+        <!-- Role -->
+        <button class="btn">Frontend</button>
+        <!-- Level -->
+        <button class="btn">Junior</button>
+        <!-- Languages -->
+        <button class="btn">Javascript</button>
+        <button class="btn">HTML</button>
+        <!-- Tools -->
+        <button class="btn">Vue</button>
+        <button class="btn">Sass</button>
+      <!-- Item End -->
+    </section>
+
+    <section class="listing eyecam-co"
+    data-role="fullstack" 
+    data-level="midweight" 
+    data-languages="['javascript', 'python']"
+    data-tools="django"
+    >
+      <!-- Item Start -->
+      <div class="item-start">
+        <p>
+          Eyecam Co.
+        </p> 
+        <p>
+          Full Stack Engineer
+        </p>
+        <p>
+          3w ago <span>Full Time</span> Worldwide
+        </p>
+      </div>
+      <div class="categories">
+        <!-- Role -->
+        <button class="btn">Fullstack</button>
+        <!-- Level -->
+        <button class="btn">Midweight</button>
+        <!-- Languages -->
+        <button class="btn">Javascript</button>
+        <button class="btn">Python</button>
+        <!-- Tools -->
+        <button class="btn">Django</button>
+      <!-- Item End -->
+    </section>
+
+    <section class="listing the-air-filter"
+    data-role="frontend" 
+    data-level="junior" 
+    data-languages="javascript"
+    data-tools="['react', 'sass']"
+    >
+      <!-- Item Start -->
+      <div class="item-start">
+        <p>
+          The Air Filter Company
+        </p> 
+        <p>
+          Front-end Dev
+        </p>
+        <p>
+          1mo ago <span>Part Time</span> Worldwide
+        </p>
+      </div>
+      <div class="categories">
+        <!-- Role -->
+        <button class="btn">Frontend</button>
+        <!-- Level -->
+        <button class="btn">Junior</button>
+        <!-- Languages -->
+        <button class="btn">Javascript</button>
+        <!-- Tools -->
+        <button class="btn">React</button>
+        <button class="btn">Sass</button>
+      <!-- Item End -->
+    </section>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Wiss69</a>.
+    </div>
+  </body>
+</html>

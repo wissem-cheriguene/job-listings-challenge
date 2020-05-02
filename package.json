@@ -1,0 +1,20 @@
+{
+  "name": "job-listings-challenge",
+  "version": "1.0.0",
+  "description": "![Design preview for the Job Listings coding challenge](./design/desktop-preview.jpg)",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass -w scss/ -o dist/css/ --recursive",
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wiss69/job-listings-challenge.git"
+  },
+  "author": "Wissem",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wiss69/job-listings-challenge/issues"
+  },
+  "homepage": "https://github.com/Wiss69/job-listings-challenge#readme"
+}
