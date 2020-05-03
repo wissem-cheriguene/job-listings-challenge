@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap");
+
+$font-size: 15px;
+$font-family: "Spartan", sans-serif;
+
+$primary-color: hsl(180, 29%, 50%);
+$backgound-color: hsl(180, 52%, 96%);
+$dark-grey: hsl(180, 8%, 52%);
+$very-dark-grey: hsl(180, 14%, 20%);
+$light-grey: hsl(180, 31%, 95%);
+
+@mixin img-settings {
+  position: absolute;
+  top: -20px;
+  left: 15px;
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+}

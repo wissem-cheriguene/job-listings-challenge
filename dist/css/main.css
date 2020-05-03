@@ -1,2 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap");
 body {
-  background: #333; }
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Spartan", sans-serif;
+  line-height: 1.5;
+  background: #effafa;
+  color: #5ba4a4; }
+
+* {
+  box-sizing: border-box; }
+
+p {
+  margin: 0;
+  padding: 0;
+  font-weight: 500; }
+
+.header {
+  width: 100%;
+  height: 20vh;
+  background: url("../images/bg-header-mobile.svg");
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.main {
+  width: 80%;
+  margin: auto; }
+
+.search-container {
+  margin-top: -5vh;
+  min-height: 10vh;
+  background-color: #fff;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-radius: 10px; }
+  .search-container .filter {
+    width: 80%;
+    padding: 1rem; }
+    .search-container .filter .list-categories {
+      list-style: none;
+      padding: 0;
+      margin: 0; }
+  .search-container .item--close-button::after {
+    position: absolute;
+    content: url("../images/icon-remove.svg");
+    background: #5ba4a4;
+    top: 0;
+    right: 0;
+    padding: 5px;
+    padding-left: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer; }
+  .search-container .clear {
+    color: #6e9191;
+    cursor: pointer; }
+
+.item {
+  display: inline-block;
+  background-color: #deeded;
+  padding: 5px;
+  font-size: 1.2rem;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin: 1rem;
+  position: relative;
+  padding-right: 2rem; }
+
+.listing {
+  margin-top: 6rem;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 3px 1px 1px #effafa; }
+  .listing:last-of-type {
+    margin-bottom: 3rem; }
+  .listing .container {
+    padding: 1.5rem 1rem; }
+    .listing .container img {
+      margin-top: -67px; }
+    .listing .container .info-company .name {
+      font-weight: 700; }
+    .listing .container .info-company .new {
+      font-weight: 700;
+      margin-left: 10px;
+      padding: 6px 9px;
+      background-color: #5ba4a4;
+      color: #fff;
+      border-radius: 20px; }
+    .listing .container .info-company .featured {
+      font-weight: 700;
+      margin-left: 10px;
+      padding: 6px 9px;
+      background-color: #2c3a3a;
+      color: #fff;
+      border-radius: 20px; }
+    .listing .container .job-name {
+      margin-top: 10px;
+      margin-bottom: 10px; }
+      .listing .container .job-name .name {
+        font-weight: 700;
+        color: #2c3a3a;
+        font-size: 1.2rem; }
+    .listing .container .alt-infos {
+      border-bottom: 1px solid #6e9191;
+      padding-bottom: 10px;
+      margin-bottom: 10px; }
+      .listing .container .alt-infos .content {
+        color: #6e9191; }
+      .listing .container .alt-infos .dotted::after {
+        content: "";
+        width: 3px;
+        height: 3px;
+        display: inline-block;
+        background-color: #6e9191;
+        border-radius: 50%;
+        margin: 5px 10px; }
+      .listing .container .alt-infos .dotted::before {
+        content: "";
+        width: 3px;
+        height: 3px;
+        display: inline-block;
+        background-color: #6e9191;
+        border-radius: 50%;
+        margin: 5px 10px; }
+    .listing .container .categories {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: inline-flex;
+      flex-wrap: wrap; }
+      .listing .container .categories .item {
+        border-radius: 5px;
+        padding-right: 5px;
+        cursor: pointer; }
