@@ -188,7 +188,7 @@ function getjobListingHTML(listingData) {
         </div>
     
         <ul class="categories">
-            '###CATEGORIES###'
+          ${categoriesPlaceholder}
         </ul>
       </div>
   </section>
@@ -203,6 +203,8 @@ function getjobListingHTML(listingData) {
     ...(listingData.tools || []),
   ];
 
+  const passesFilter = !filterC;
+
   const categoryString = categoriesArray.reduce((acc, currentCategory) => {
     console.log(getCategoriesHTML(currentCategory));
     return acc + getCategoriesHTML(currentCategory);
@@ -211,14 +213,74 @@ function getjobListingHTML(listingData) {
   return jobListingHTML.replace(categoriesPlaceholder, categoryString);
 }
 
-function getCategoriesHTML(categories) {
-  return `<li class="item">
+function getCategoriesHTML(categories = [], closeItem = "item") {
+  return `<li class="${closeItem}">
         ${categories}
       </li>`;
 }
 
-const jobsListingsHTML = jobsListings.reduce((acc, currentListing) => {
-  return acc + getjobListingHTML(currentListing);
-}, "");
+function setJobsListings(filterTags) {
+  const jobsListingsHTML = jobsListings.reduce((acc, filterTags) => {
+    return acc + getjobListingHTML(filterTags);
+  }, "");
 
-document.getElementById("jobs").innerHTML = jobsListingsHTML;
+  document.getElementById("jobs").innerHTML = jobsListingsHTML;
+}
+
+// Fonction qui 'toogle' la valeur lorsqu'on click sur un élément du tableau
+// des catégories
+
+function getAllSearchBar(targetCategory) {
+  // On selectionne le point d'injection
+  searchContainerEl = document.querySelector(".list-categories");
+
+  // ON prepare un tableau filtrant
+  let searchBarTags = Array.from(searchContainerEl.children)
+    .map((node) => node.innerHTML && node.innerHTML.trim())
+    .filter((category) => !!category);
+  console.log(searchBarTags);
+
+  // Si le tableau contient une catégorie selectionner comme filtre
+  if (searchBarTags.includes(targetCategory)) {
+    // Le tableau est filtrer avec la condition que la category appartenent au // tableau doit être différent de la catégorie 'clicker'.
+    searchBarTags = searchBarTags.filter(
+      (category) => category !== targetCategory
+    );
+  } else {
+    // On ajoute la catégorie au tableau
+    searchBarTags = [...searchBarTags, targetCategory];
+  }
+
+  return searchBarTags;
+  // On prépare l'HTML à injecter (categorie)
+  // const closeCategoriesHTML = getCategoriesHTML(
+  //   targetEl.innerHTML,
+  //   "close-item"
+  // );
+  // console.log(searchContainerEl.innerHTML);
+  // On le rajoute dans la modal de recherche
+  // searchContainerEl.innerHTML =
+  //   searchContainerEl.innerHTML + closeCategoriesHTML;
+}
+
+// Récuperer lelement catgorie au click sur l'ecran
+
+window.addEventListener("click", (event) => {
+  console.log(event.target);
+  // Onrecupere notre categorie
+  targetEl = event.target;
+  targetCategory = event.target.innerHTML.trim();
+  const categoryClasses = ["item", "close-item"];
+  // Si on click sur la searchBar pour supp un element du filtre courant
+  if (!categoryClasses.some((c) => targetEl.classList.contains(c))) {
+    return;
+  }
+
+  const searchBarTags = toogleSearchBar(targetCategory);
+
+  searchContainerEl.innerHTML = searchBarTags.reduce((acc, currentCategory) => {
+    return acc + getCategoriesHTML(currentCategory, "close-item");
+  }, "");
+
+  setJobsListings();
+});

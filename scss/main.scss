@@ -55,21 +55,6 @@ p {
     }
   }
 
-  .item--close-button {
-    &::after {
-      position: absolute;
-      content: url("../images/icon-remove.svg");
-      background: $primary-color;
-      top: 0;
-      right: 0;
-      padding: 5px;
-      padding-left: 5px;
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-      cursor: pointer;
-    }
-  }
-
   .clear {
     color: lighten($very-dark-grey, 30);
     cursor: pointer;
@@ -78,7 +63,8 @@ p {
 
 // Button
 
-.item {
+.item,
+.close-item {
   display: inline-block;
   background-color: lighten($primary-color, 40);
   padding: 5px;
@@ -88,6 +74,18 @@ p {
   margin: 1rem;
   position: relative;
   padding-right: 2rem;
+}
+.close-item::after {
+  position: absolute;
+  content: url("../images/icon-remove.svg");
+  background: $primary-color;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  padding-left: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
 }
 
 // Listing jobs
