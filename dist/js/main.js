@@ -155,7 +155,6 @@ function checkIfLanguagesExists(listingData) {
     return [];
   }
 }
-// console.log(checkIfLanguagesExists(dataJSON[0]));
 
 function checkIfToolsExists(listingData) {
   if (listingData.tools) {
@@ -164,10 +163,9 @@ function checkIfToolsExists(listingData) {
     return [];
   }
 }
-// console.log(checkIfToolsExists(dataJSON[0]));
 
-function getjobListingHTML(listingData) {
-  console.log(listingData);
+function getjobListingHTML(listingData, filterTags = []) {
+  //console.log(listingData);
   const categoriesPlaceholder = "###CATEGORIES###";
   let jobListingHTML = `
   <section class="listing">
@@ -203,10 +201,21 @@ function getjobListingHTML(listingData) {
     ...(listingData.tools || []),
   ];
 
-  const passesFilter = !filterC;
+  // Passe les catégories du tableau en minuscule
+  const tagsListLowercase = categoriesArray.map(t => t && t.toLowerCase());
+  
+  //console.log(filterTags);
+  // Si le tableau 
+  const passesFilter = !filterTags.length || filterTags.every(tag => (
+    tagsListLowercase.includes(tag && tag.toLowerCase())
+  ));
+
+  if (!passesFilter) {
+    return '';
+  }
 
   const categoryString = categoriesArray.reduce((acc, currentCategory) => {
-    console.log(getCategoriesHTML(currentCategory));
+    //console.log(getCategoriesHTML(currentCategory));
     return acc + getCategoriesHTML(currentCategory);
   }, "");
 
@@ -218,19 +227,19 @@ function getCategoriesHTML(categories = [], closeItem = "item") {
         ${categories}
       </li>`;
 }
-
+// On recupere le tableau des filtres de recherche selectionner pour filtrer les résultats à afficher 
 function setJobsListings(filterTags) {
-  const jobsListingsHTML = jobsListings.reduce((acc, filterTags) => {
-    return acc + getjobListingHTML(filterTags);
+
+
+  const jobsListingsHTML = jobsListings.reduce((acc, currentListing) => {
+    return acc + getjobListingHTML(currentListing, filterTags);
   }, "");
 
   document.getElementById("jobs").innerHTML = jobsListingsHTML;
 }
 
-// Fonction qui 'toogle' la valeur lorsqu'on click sur un élément du tableau
-// des catégories
-
-function getAllSearchBar(targetCategory) {
+// Fonction qui 'toogle' la valeur lorsqu'on click sur un élément du tableau de recherche
+function toogleSearchBar(targetCategory) {
   // On selectionne le point d'injection
   searchContainerEl = document.querySelector(".list-categories");
 
@@ -238,7 +247,7 @@ function getAllSearchBar(targetCategory) {
   let searchBarTags = Array.from(searchContainerEl.children)
     .map((node) => node.innerHTML && node.innerHTML.trim())
     .filter((category) => !!category);
-  console.log(searchBarTags);
+  //console.log(searchBarTags);
 
   // Si le tableau contient une catégorie selectionner comme filtre
   if (searchBarTags.includes(targetCategory)) {
@@ -247,40 +256,37 @@ function getAllSearchBar(targetCategory) {
       (category) => category !== targetCategory
     );
   } else {
-    // On ajoute la catégorie au tableau
+    // On ajoute la catégorie au tableau si la catégorie n'est pas dans le tableau
     searchBarTags = [...searchBarTags, targetCategory];
   }
 
   return searchBarTags;
-  // On prépare l'HTML à injecter (categorie)
-  // const closeCategoriesHTML = getCategoriesHTML(
-  //   targetEl.innerHTML,
-  //   "close-item"
-  // );
-  // console.log(searchContainerEl.innerHTML);
-  // On le rajoute dans la modal de recherche
-  // searchContainerEl.innerHTML =
-  //   searchContainerEl.innerHTML + closeCategoriesHTML;
+
 }
 
-// Récuperer lelement catgorie au click sur l'ecran
-
+// Gestion de la dynamisation du contenu
 window.addEventListener("click", (event) => {
-  console.log(event.target);
-  // Onrecupere notre categorie
+  //console.log(event.target);
+  // On recupere n'importe quelle event clicker dans la fenetre
   targetEl = event.target;
+  // On applique un filtre qui enleve les blanc, espaces... pour ne garder que la valeur brute.
   targetCategory = event.target.innerHTML.trim();
+  // On definit un tableau pour filtrer et ne garder que les elements qui nous interrese 
   const categoryClasses = ["item", "close-item"];
-  // Si on click sur la searchBar pour supp un element du filtre courant
+
+  // Si l'element clicker ne contient pas l'un des classes défini dans le tableau filtrant on stop le script.
   if (!categoryClasses.some((c) => targetEl.classList.contains(c))) {
     return;
   }
 
+  // S'occupe d'ajouter la catégorie au tableau et de la filtrer en fonction de son nom 
   const searchBarTags = toogleSearchBar(targetCategory);
 
+  // S'occupe d'ajouter dans HTML en dynamique le template des listes des catégories
   searchContainerEl.innerHTML = searchBarTags.reduce((acc, currentCategory) => {
     return acc + getCategoriesHTML(currentCategory, "close-item");
   }, "");
 
-  setJobsListings();
+  // S'occupe de filtrer les résultats : Afficher les catégories en fonction des catégories présent dans le tableau filtrant
+  setJobsListings(searchBarTags);
 });
